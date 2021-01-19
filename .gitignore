@@ -1,0 +1,4 @@
+# Ignorando dependências do Eclipse #
+
+RemoteSystemsTempFiles/
+Servers/
