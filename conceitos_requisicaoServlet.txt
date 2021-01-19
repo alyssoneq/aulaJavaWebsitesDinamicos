@@ -1,0 +1,22 @@
+- REQUISIÇÃO GET E POST
+
+	A requisição GET é processada pelo método doGet() e requisição POST pelo
+método doPost()
+
+	O acesso aos parâmetros das requisições é feito através da classe
+javax.servlet.http.httpServletRequest
+
+	Ambos métodos possuem 2 parâmetros:
+		* primeiro do tipo --> HttpServletRequest
+
+- MÉTODOS DA CLASSE HttpServletRequest
+
+	Vários métodos são usados para pegar informação sobre os parametros
+
+- método getParameterName()
+
+	pega os nomes de todos os parametros da requisição
+
+	Útil para listar todos os parâmetros enviados
+
+	Tipo do retorno desse método --> Enumeration<String>
