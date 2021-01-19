@@ -1,0 +1,12 @@
+
+	Quando uma requisição web realizada por um cliente é mapeada para um
+servlet, o container web realiza os seguintes passos:
+
+	1. Primeiro acesso ao Servlet pelo container, então:
+		a. carrega classe do servlet (lê o bytecode)
+		b. instancia a classe (cria objeto da classe carregada)
+		c. executa método init() do servlet
+	2. Executa método service() da superclasse HttpServlet
+	3. Quando servlet não é mais necessário, método destroy() é realizado
+
+
