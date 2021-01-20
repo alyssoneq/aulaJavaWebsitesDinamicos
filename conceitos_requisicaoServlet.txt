@@ -20,3 +20,17 @@ javax.servlet.http.httpServletRequest
 	Útil para listar todos os parâmetros enviados
 
 	Tipo do retorno desse método --> Enumeration<String>
+
+- REPASSANDO PARÂMETROS
+
+	Abordagem para repassar parametros entre várias telas:
+		* campos ocultos (hidden)
+		* sessão
+
+- campos ocultos (hidden)
+
+	os campos da tela anterior aparecem ocultos na tela seguinte. Exemplo:
+
+	<input type= "hidden" name="nome" value="">
+
+	A propriedade value é preenchida pelo usuario

@@ -41,6 +41,10 @@ public class ServletOlaPersonalizado extends HttpServlet {
 						" anos </p></h1></body></html>";
 		response.getWriter().append(html);
 	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
 
 	
 }
