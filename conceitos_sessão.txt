@@ -1,0 +1,26 @@
+- CAMPOS OCULTOS vs SESSÃO
+
+	Com campos ocultos, o estado do cliente fica no lado do cliente. Isso
+gera problemas como:
+	* navegador fechar, perde estado
+	* valores do parametros expostos na url
+
+	Com sessões, o estado do cliente é mantido no lado do servidor. Isso é
+feito com uma interface java chamada de javax.servlet.http.HttpSession
+
+- sessão
+
+	Cada usuário tem apenas um objeto do tipo HttpSession para representar
+seu estado.
+
+	Para criar sessão:
+		* usar método getSession() da classe HttpServletRequest
+
+	Comportamento do método getSession:
+		* Sem objeto de sessão, o método cria um objeto HttpSession
+		* Objeto já existe, então método retorna objeto HttpSession
+
+	O servidor reconhece a máquina pelo IP ou cookies. Um cookie é criado
+de forma automática ao criar o objeto HttpSession, na resposta do servlet uma
+instrução indica que o cookie deve ser criado. O valor do cookie é um Id único.
+Isso cria um vínculo entre cliente e servidor.
