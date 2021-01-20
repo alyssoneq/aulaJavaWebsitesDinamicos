@@ -24,3 +24,21 @@ seu estado.
 de forma automática ao criar o objeto HttpSession, na resposta do servlet uma
 instrução indica que o cookie deve ser criado. O valor do cookie é um Id único.
 Isso cria um vínculo entre cliente e servidor.
+
+- COOKIES
+
+	Armazena informações sobre um cliente, quando esse visita o site. Usar
+cookies permite:
+	* identificar cliente
+	* personalizar conteúdo específico para o cliente
+	
+- tipos de cookies
+
+	Existem 2 tipos de cookies:
+		* de sessão
+		* persistentes
+
+	Os cookies de sessão são armazenados na memoria do computador
+
+	Os cookies persistentes são armazenados em um arquivo texto no PC
+do cliente. Dessa forma fica armazenado por um longo período.
