@@ -1,0 +1,16 @@
+- DEFINIÇÕES
+
+	tecnologia para webpages estáticas e dinâmicas
+
+	JSP é um arquivo texto que resulta em pagina web, ao ser acessado. Além
+disso, tem extensão .jsp
+
+	Arquivo .jsp pode conter:
+		* conteúdo estático (marcadores HTML)
+		* conteúdo dinâmico (marcadores JSP)
+
+	Vantagem do JSP --> não precisa compilar o código:
+		* página é criada e executada no servlet container
+
+	A página JSP é um script interpretado, para então ser compilado em um
+servlet. O arquivo é pré-compilado em uma classe java, ao ser chamado
