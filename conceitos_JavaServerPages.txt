@@ -63,3 +63,12 @@ servlet. O arquivo é pré-compilado em uma classe java, ao ser chamado
 então a variável definida na estrutura vira um atributo da classe gerada, ao
 compilar o jsp em um servlet. Portanto, seu valor nao será local, permitindo
 seu instanciamento.
+
+- MODULARIZAÇÃO DO CÓDIGO
+
+	O conteúdo de um arquivo JSP pode ser dividido em partes menores, então
+essas podem ser compostas para resultar nas páginas do sistema.
+
+	O link de arquivos JSP é feito pela estrutura:
+
+	<%@ include file='fileName.jsp' %>
