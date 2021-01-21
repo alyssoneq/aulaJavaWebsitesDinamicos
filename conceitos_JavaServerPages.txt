@@ -57,7 +57,10 @@ servlet. O arquivo é pré-compilado em uma classe java, ao ser chamado
 - SCRIPLETS
 
 
-	Scriplets são blocos de código java delimitados pelos marcadores <% %>
+	Scriplets são blocos de código java delimitados pelos marcadores <% %>.
+Scriplet são trechos de códigos Java que podem ser inseridos em qualquer lugar
+da página e serve, dentre outras coisas, para definir valores às variáveis
+usadas nas expressões.
 
 	Ao declarar uma atributo no scriptlet por meio da estrutura <%! %>,
 então a variável definida na estrutura vira um atributo da classe gerada, ao
@@ -72,3 +75,22 @@ essas podem ser compostas para resultar nas páginas do sistema.
 	O link de arquivos JSP é feito pela estrutura:
 
 	<%@ include file='fileName.jsp' %>
+
+			ou
+
+	<jsp:include page="nameFile.jsp" >
+
+	A instrução <%@ include %> faz a inclusão de conteúdo estático. Já a
+diretiva <jsp:include > faz inclusão de conteúdo estático e dinâmico
+
+- recuperando parâmetro 
+
+	A inclusão de um parâmetro em uma JSP é feita pela diretiva:
+	
+	<jsp:param name="nomeParametro" value="valor"/>
+
+	Exemplo abaixo:
+
+	<jsp:include page="nomeArquivo.jsp">
+	   <jsp:param name="nomeParametro" value="valor" />
+	</jps:include>
