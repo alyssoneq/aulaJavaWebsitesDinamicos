@@ -14,3 +14,52 @@ disso, tem extensão .jsp
 
 	A página JSP é um script interpretado, para então ser compilado em um
 servlet. O arquivo é pré-compilado em uma classe java, ao ser chamado
+
+- CICLO DE VIDA DO JSP
+
+	O primeiro acesso ao arquivo JSP:
+		* o arquivo jsp será traduzido para um servlet
+		* todo conteudo da pagina resposta é escrito por uma variavel
+		  chamada "out"
+		* conteudo estático é passado como parâmetro pelo comando
+		  out.write()
+		* conteudo dinamico é representado por marcadores e diretivas
+
+- ESTRUTURAS JSP
+
+	As tags especiais do jsp <% %> 
+
+- comentários jsp
+
+	<%-- comentário --%>
+
+		ou
+
+	<%
+	/* comentário para mais de 1 linha */%>
+
+- declaração de método ou atributo
+
+	<%! %>
+
+	Exemplo declaraçao de variável i com valor 0:
+
+	<%! int i = 0; %>
+
+- expressão de resultado
+
+	Esta estrutura retorna valor ao usuário <%= %>
+
+	Exemplo de display na tela da soma de variáveis:
+
+	<%= a + b + c %>
+
+- SCRIPLETS
+
+
+	Scriplets são blocos de código java delimitados pelos marcadores <% %>
+
+	Ao declarar uma atributo no scriptlet por meio da estrutura <%! %>,
+então a variável definida na estrutura vira um atributo da classe gerada, ao
+compilar o jsp em um servlet. Portanto, seu valor nao será local, permitindo
+seu instanciamento.
