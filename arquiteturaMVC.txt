@@ -1,0 +1,28 @@
+- DEFINIÇÕES
+
+	A arquitetura MVC foi uma solução para evitar a sobrecarga de código
+HTML em servlets, bem como código java em arquivos JSP
+
+	Uma arquitetura de software indica a forma em que o software é dividido
+em termos de:
+	* componentes
+	* funções
+	* relacionamentos
+	* etc
+
+	A arquitetura MVC (model - view - controller) estrutura a separação do
+código de um software nos seguintes componentes/camadas:
+	* controlador --> recebe comandos do usuário e aciona ações corretas
+	* modelo --> regras de negócio / transações de negócio / banco de dados
+	* visão --> apresenta resposta / monta telas de resposta
+
+	Funcionamento do MVC:
+		* usuario acessa URL
+		* aciona controlador (Servlet) executando no servidor Web
+		* controlador realiza mudança no modelo de negócio
+		* controlador redireciona montagem da resposta para um JSP
+
+- Modelando o sistema
+
+	A modelagem do sistema, geralmente, começa com a modelagem das classes
+que representam o negócio do sistema. 
