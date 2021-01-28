@@ -1,0 +1,219 @@
+- FUNCIONALIDADES DA BIBLIOTECA PADRÃO JSTL
+
+	A padronização permite que você use seus aplicativos em qualquer
+container JSP que suporte JSTL. As funcionalidades da biblioteca padrão JSTL:
+	* core (prefixo c)
+	* XML (prefixo x)
+	* I18N (prefixo fmt)
+	* Database (prefixo sql)
+	* Funções (prefixo fn)
+
+	subfunções da área core:
+		* suporte a variáveis
+		* fluxo de controle
+		* gerenciamento de URLs
+		* miscelâneas
+
+	subfunções da área XML:
+		* core
+		* fluxo de controle
+		* transformação
+
+	subfunções da área I18N:
+		* localidade
+		* formatação de mensagens
+		* formataço de números e datas
+
+	subfunções da área database:
+		* SQL
+
+	subfunções da área funções:
+		* tamanho de coleções
+		* manipulação de strings
+
+- Biblioteca core
+
+	tags da função de suporte a variaveis:
+		* remove
+		* set
+
+	Tags da função de controle de fluxo:
+		* choose
+		* when
+		* otherwise
+		* forEach
+		* if
+	
+	tags da função de gerenciamento de URLs:
+		* import
+		* param
+		* redirect
+		* url
+		
+	tags da função miscelâneas:
+		* catch
+		* out
+
+- tag c:out
+
+	exibe os valores armazenados nas variáveis de escopo na página. O
+escopo pode ser:
+	* a própria página
+	* o request
+	* a sessão
+	* a aplicação
+
+	O código <c:out value="${var}"/> procura um objeto chamado var 
+no escopo da página. Não encontrando, procura no request. Senão achar, 
+procurar na sessão até chegar no escopo da aplicação.
+
+	página --> request --> sessão --> aplicação
+
+	Caso não seja encontrado, nada é exibido. contudo, sendo a variável do
+tipo null, então uma string vazia é exibida. Eliminando preocupação com erro
+do tipo NullPointerException.
+
+- atributos da biblioteca core
+
+	value --> valor avaliado e exibido:
+		* é obrigatório
+		* não possui valor default
+
+	default --> valor exibido caso value seja vazio ou nulo:
+		* não é obrigatório
+		* valor padrão é o contido no corpo da tag
+
+	escapeXml --> escapa caracteres:
+		* não é obrigatório
+		* valor default = true
+
+- tag c:catch
+
+	Complemento ao mecanismo de controles de erro do JSP. Permite captura
+de exceções que não são de partes cruciais da página e trata sem invocar página
+de erro.
+
+	Exceção encapsulada por essa tag é armazenada em uma variável definida
+pelo atributo var
+
+	<c:catch var="excecao"> body </c:catch>
+
+- SUPORTE A VARIÁVEIS
+
+	Permite definir e remover variáveis dentro do escopo da requisição JSP
+que está sendo processada. 
+
+	Tags responsáveis por esse suporte:
+		* <c:remove>
+		* <c:set>
+
+- tag <c:set>
+
+	tag c:set permite definir variáveis que não existiam na requisição JSP:
+		* define variável de JavaBeans
+		* define variável de qualquer escopo da página JSP
+
+	formas de informar à tag qual valor armazenar:
+
+	<c:set var="nomeVariavel" value="valorInformado"/>
+
+			ou
+
+	<c:set var="nomeVariavel"> valorInformado </c:set>
+
+	Atributos da tag c:set:
+		* value --> valor armazenado
+		* target --> define valores para propriedads em beans
+		* property --> nome da propriedade do objeto definido em target
+		* var --> variável que armazena o valor em value
+		* scope --> escopo (pagina, requisição, sessao ou aplicação)
+
+	Não é possível usar var e target em uma mesma tag c:set
+
+	Para o atributo target, o resultado da expressão deve ser um objeto.
+Caso a propriedade definida não exista no objeto dito em target, então ocorre
+um erro em tempo de execução.
+
+- tag <c:revome>
+
+	Permite remover do escopo as variáveis que nao serão mais utilizadas.
+Basta informar o nome e escopo em que ela se encontra. Caso o escopo nao seja
+definido, procura pela variável em todos os escopos. A tag <c:set> tem como
+default o escopo página.
+
+- GERENCIAMENTO DE URL E CONTROLE DE FLUXO
+
+	tags básicas para gerenciamento de URL:
+		* c:url
+		* c:import
+		* c:redirect
+
+	As 3 tags acima pode usar a tag c:param para passar parametros
+
+	tags de funcionalidades de controle de fluxo:
+		* tag de loop <c:forEach>
+		* tag de teste condicional <c:if>
+
+- tag <c:url>
+
+	Constroi uma URL aplicando as regras apropriadas de reescrita de URLs.
+Reescrita de URL = URL mais completa.
+
+	Atributos da tag <c:url>:
+		* value --> url a ser processada
+		* var --> variável que guarda valor da URL
+		* scope --> escopo onde a var será armazenada (default = pagina)
+
+- tag <c:import>
+
+	Permite incluir outras paginas em sua página JSP, do mesmo servidor ou
+de outros. As páginas devem conter apenas trechos de código.
+
+	Atributos da tag <c:import>:
+		* url --> URL do recurso a ser importado (obrigatório)
+		* var --> variavel que guarda o conteudo importado
+		* scope --> escopo onde var será armazenada
+
+	É possível passar parametros para a URL com a tag <c:param>
+
+- tag <c:redirect>
+
+	Permite que o fluxo de requisição seja desviado para outra URL. Logo, ao
+processar uma página JSP com a tag <c:redirect>, o fluxo desvia para outra 
+página no servidor.
+
+	Atributos da tag <c:redirect>:
+		* url --> URL para qual o fluxo será redirecionado
+
+	A tag <c:redirect> aceita a tag <c:param>
+
+- tag <c:forEach>
+
+	Fornece maneira simples de iterar em coleções (arrays, listas, mapas...)
+ou de iterar um número definido de vezes.
+
+	atributos da tag <c:>:
+		* begin --> indice inicial do loop (default = 0)
+		* end --> indice final do loop (default = ultimo item)
+		* step --> procesa cada enésimo elemento (default = 1)
+		* var --> variavel com elemento corrente do loop
+		* items --> objeto a ser iterado
+		* varStatus --> armazena status do loop:
+			* index --> posição do item atual no loop
+			* count --> nº de execuções do loop
+			* first --> booleano indica se é a primeira iteração
+			* last --> booleano indica se é a última iteração
+
+	A variável definida no atributo var só pode ser usada na tag <c:forEach>
+
+- tag <c:if>
+
+	Permite o controle de fluxo condicional. Exemplo de controle de fluxo:
+
+	Página única que serve para todos os usuários. Então de acordo com o
+perfil de usuário logado, alguns itens são exibidos e outros não.
+
+	Atributos da tag <c:if>:
+		* test --> expressão condicional a ser avaliada (obrigatório)
+		* var
+		* scope
