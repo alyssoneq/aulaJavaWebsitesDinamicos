@@ -217,3 +217,166 @@ perfil de usuário logado, alguns itens são exibidos e outros não.
 		* test --> expressão condicional a ser avaliada (obrigatório)
 		* var
 		* scope
+
+- BIBLIOTECA I18N
+
+	Implementa funcionalidades para construir sistemas web internacionais,
+ou seja, conteudo com localidade ou preferências do usuário.
+
+	Funções da biblioteca I18N:
+		* definição de localidade
+		* mensagens
+		* formatação
+
+- tag <fmt: setLocale>
+
+	Permite definir qual locale (idioma + região) será usado para exibir os
+itens sensíveis à localidade.
+
+	Escopos que podem ser definidos locale:
+		* página (padrão)
+		* requisição
+		* sessão
+		* aplicação
+
+	Essa tag sobrescreve o locale do browser.
+
+	A tag <fmt: setLocale> é de configuração, então seu corpo deve ser vazio
+e seu escopo pode ser mais abrangente que uma página.
+
+	atributos da tag <fmt: setLocale>:
+		* value --> string ou expressão (obrigatório)
+		* scope --> escopo onde a variável Locale será armazenada
+
+- tag <fmt:bundle>
+
+	define o contexto de localização, baseado em um arquivo de propriedades
+que será usado apenas no corpo da tag.
+
+	Arquivo de propriedades:
+		* arquivo de texto com extensão ".properties"
+		* contem dados específicos de uma locale
+		* mecanismo para se ter um sistema multilingue
+		* cada linha tem uma palavra-chave e um valor
+
+	Exemplos de uso da tag <fmt: bundle>:
+
+	- identificar arquivo propriedades para toda aplicação
+
+	<fmt:setBundle basename="messages" scope="application"/>
+
+	- especificar que certo conteudo não vai usar o arquivo padrao
+
+	<fmt:bundle basename="message2">
+	  <fmt:message key="message.helloWorld"/>
+	</fmt:bundle>
+
+	Atributos da tag <fmt: bundle>:
+		* basename --> nome do arquivo propriedades (obrigatório)
+		* prefix --> string que será pré-concatenada ao valor da chave
+
+	Atributos da tag <fmt: setBundle>:
+		* basename --> nome do arquivo propriedades (obrigatório)
+		* var --> nome do arquivo propriedades
+		* scope --> escopo de var armazenado
+
+- tag <fmt:message>
+
+	Possui tag auxiliar --> <fmt:param>
+
+	A tag <fmt:message> procura por mensagens localizadas dentro de um 
+arquivo propriedades
+
+	Exemplo de uso das tags <fmt:message> e <fmt:param>:
+
+	<fmt:message key="message.goodMorning">
+	  <fmt:param value="Professor"/>
+	</fmt:message>
+
+	Nesse caso, a aplicação procura no arquivo propriedades uma mensage
+com a chave especifica em <fmt:message>, mas para utilizar a tag <fmt:param>, 
+a mensagem deve ter o padrão abaixo:
+
+	message.goodMorning = Bom dia {0}!!!
+
+	Em que o 0(zero) é indíce dos parametros, e será substituido pelo
+parametro zero passado na requisição.
+
+- FORMATAÇAO DE DATAS E NUMEROS
+
+	Tagas de datas e numeros sensiveis à localização.
+
+- tag <fmt:formatDate>
+
+	usa informações de localização do browser ou a definida na tag setLocale
+Formata informações de data e hora.
+
+	Essa tag espera um objeto do tipo java.util.Date
+
+	Atributos da tag <fmt:formatDate>:
+		* type --> define tipo do valor recebido em value
+		* dataStyle --> estilo de formato de data. Usado se type = date
+		* timeStyle --> estilo de formato de hora. Usado se type = time
+		* pattern --> expressao para formatar data e hora
+		* timeZone --> fuso horário da data
+		* value --> valor da data a formatar
+		* var --> variavel que armazena data e hora
+		* scope --> escopo onde var é armazenada
+
+- tag <fmt:formatNumber>
+
+	Essa tag recebe um objeto do tipo java.lang.Number (double é uma 
+subclasse de Number), para entao aplicar as formatações.
+
+	atributos da tag <fmt:formatNumber>:
+		* value --> valor a ser formatado
+		* type --> define tipo de valor dito em value
+		* pattern --> expressao para formatação. Sobrescrever os demais
+		* currencyCode --> codigo para formatar valores monetarios
+		* currencySymbol --> simbolo da moeda
+		* maxIntegerDigits --> numero máximo de digitos inteiros
+		* minIntegerDigits --> numero minimo de digitos inteiro
+		* maxFractionDigits --> numero maximo de digitos decimais
+		* minFractionDigits --> numero minimo de digitos decimais
+		* var --> variavel que armazena numero formatado
+		* scope --> escopo onde var está armazenado
+
+- FUNÇÕES DE JSTL
+
+	Manipulam strings e descobrem o tamanho das coleções e strings.
+
+	Funções básicas de String:
+		* trim()
+		* toUpperCase()
+		* substring()
+		* etc
+
+	A taglib functions define uma assinatura de método para invoca, como
+parametros e tipo de retorno. Esses devem ser invocados de forma similar à um
+método numa classe Java.
+
+- EXPRESSION LANGUAGE (EL)
+
+	Forma elegante de não usar scriptlets. A vantagem é que o código fica
+mais legível, fácil de entender e manter.
+
+	Sintaxe de uma expressão em EL:
+
+		${expressão}
+
+	A EL permite acesso de objeto em todos os escopos da aplicação, sem
+precisar indicar onde os objetos estão, pois a EL procura automaticamente.
+
+	Contextos implícitos disponíveis:
+		* pageScope --> escopo da pagina
+		* requestScope --> escopo da requisição
+		* sessionScope --> escopo da sessão
+		* applicationScope --> escopo da aplicação
+		* param --> mapa com valor parametros da requisição
+		* paramValues --> mapa com valor parametros (array de Strings)
+		* header --> mapa com nome e valor dos headers da requisição
+		* headerValues --> mapa com nome e array de valores de headers
+		* cookie --> mapa do nome dos cookies e o cookie
+		* initParam --> mapa com o nome e valor dos parametros iniciais
+
+	
