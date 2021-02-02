@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<!-- 
+		Arquivo HTML contendo script para adicionar:
+			- novo item à lista de item
+			- texto do item selecionado no campo de texto
+	 -->
+<head>
+<meta charset="ISO-8859-1">
+<title>Adicione item</title>
+
+<script type="text/javascript">
+
+	//Adiciona um novo option ao elemento select
+	function adicionarItem(){
+	  var campoTexto=document.getElementById("item");
+	  var campoItens=document.getElementById("itens");
+	  
+	  // Método para gerar mais um option na lista select
+	  var opcaoNova=document.createElement('option');
+	  opcaoNova.text = campoTexto.value;
+	  
+	  // Método que adiciona um item novo à lista select
+	  campoItens.add(opcaoNova);
+	}
+	
+	//Concatena o texto do item selecionado na área de texto
+	function adicionarTexto(){
+	
+	  var campoAreaTexto=document.getElementById("areaTexto");
+	  var campoItens=document.getElementById("itens");
+	  
+	  var posicaoSelecionada = campoItens.selectedIndex;
+	  
+	  var novoTexto = campoItens[posicaoSelecionada].text;
+	  
+	  campoAreaTexto.value = campoAreaTexto.value + "\n" + novoTexto;
+	  
+	}
+	  
+</script>
+</head>
+<body>
+<br/>
+	<form>
+		<input id="item" type="text" value="Digite algo!" />
+		<input type="button" value="Adicionar Item" onClick="adicionarItem()"/>
+		<br/>
+		<!-- onchange ativa a função ao mudar o item selecionado -->
+		<select id="itens" onchange="adicionarTexto()">
+		  <option>Item Inicial</option>
+		</select>
+		<br/>
+		<textarea id="areaTexto" rows="20" cols="30"></textarea>
+	</form>
+</body>
+</html>

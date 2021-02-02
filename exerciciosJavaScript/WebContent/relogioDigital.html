@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	function calcularHora(){
+	  // recuperando data e hora usando construtor do objeto Date
+	  var hoje = new Date();
+	  // separando hora, minuto e segundo com os métodos do objeto
+	  var hora = hoje.getHours();
+	  var minuto = hoje.getMinutes();
+	  var segundo = hoje.getSeconds();
+
+	  // adiciona 0 na frente do número caso o número seja <10
+	  minuto=formata(minuto);
+	  segundo=formata(segundo);
+
+	  var horario = hora+":"+minuto+":"+segundo;
+
+	  var relogio = document.getElementById('relogio');
+	  
+	  // alterando valor do elemento HTML com o horário novo
+	  relogio.innerHTML = horario;
+	  
+	  // rechamando a função após 500 milisegundos 
+	  setTimeout('calcularHora()',500);
+	}
+	
+	// função para formatar valor para ter 2 dígitos
+	function formata(i){
+	  if (i<10){
+	    i="0" + i;
+	  }
+	  return i;
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>

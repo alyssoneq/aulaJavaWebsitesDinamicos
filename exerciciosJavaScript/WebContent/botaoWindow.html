@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	// função que gera uma caixa de diálogo com dois botões
+	function show_confirm(){
+		  // Gera caixa de diálogo com texto
+		  var r = window.confirm("Pressione um botão!");
+
+		  var opcao = document.getElementById("opcao");
+		  
+		  //altera texto do elemento h2 baseado no botão escolhido
+		  if (r==true)
+		  {			
+		    opcao.innerHTML = "Você pressionou OK!";
+		  }
+		  else
+		  {
+		    opcao.innerHTML = "Você pressionou Cancela!";
+		  }
+	}
+</script>
+</head>
+<body>
+<h2 id="opcao"><h2>
+	<input type="button" onclick="show_confirm()" value="Abre Caixa de Diálogo" />
+</body>
+</html>

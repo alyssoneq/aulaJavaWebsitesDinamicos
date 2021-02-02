@@ -1,0 +1,124 @@
+- DIFERENÇAS JAVASCRIPT E JAVA
+
+	Características JavaScript:
+		* interpretada pelo navegador enquanto le a pagina
+		* programação simples (recomendado para pequenos scripts)
+		* baseada em objetos (nao suporta todos os conceitos)
+		* referencias a variaveis sao checadas em tempo de execução
+		* tipos de variavel nao sao declaradas
+
+	Caracteristicas Java:
+		* Compilado em bytecode e executada pela máquina virtual java
+		* linguagem mais complexo
+		* orientada a objetos
+		* referencias a variaveis checadas em tempo de compilaçao
+		* fortemente tipada (tipo de variavel declarado)
+
+
+	Exceção de codigo java rodando no navegador Web --> Applets:
+		* o codigo Applet nao é embutido junto ao codigo HTML
+
+- DEFINIÇÕES
+
+	Um código JavaScript é embutido dentro de uma tag <script> HTML. Além
+do mais, é boa prática inserir o código JavaScript na seção head do HTML. Isso
+garante que não haverá problema de parse.
+
+	Exemplo de javascript externo referenciado no HTML:
+
+	<html>
+	  <head>
+		<script language="javascript" src="./codigo.js"></script>
+	  </head>
+	</html>
+
+	código javascript referenciado (codigo.js):
+
+	var descricao = "Esta é uma descrição"
+	alert(descricao);
+
+- VARIÁVEIS E CONSTANTES
+
+	Declarando uma variavel:
+		
+		var "nomeVariavel";
+		
+	Nome de variavel deve:
+		* começar por uma letra ou simbolo "_"
+		* aceita letras, numeros e os caracteres "_" e "$"
+		* lembrar que são case sensitive
+
+	Por não ser uma linguagem fortemente tipada:
+		* variavel pode assumir varios tipos ao longo da execução
+
+	Declarando uma constante:
+
+		const "nomeConstante";
+
+	Variaveis globais:
+		* podem ser usadas em qualquer trecho de codigo, apos declarada
+		* declaradas fora e antes de todas as funções 
+
+	Variaveis locais:
+		* declaradas e invocadas somente dentro da função
+
+- CONSTANTES
+
+	Operadores são uteis para manipular as variaveis.
+
+	Tipos de operadores:
+		* matemáticos
+		* lógicos (&&, || , !)
+		* comparaçao
+		* combinados (+=, -=, *= , /=, ++, --)
+
+- COMANDOS JAVASCRIPT
+
+	Comando if:
+		* testa condição
+
+	Comando while:
+		* repetição dependente de uma condição
+		* repetição quando não se sabe nº de repetições necessarias
+
+	Comando for:
+		* executa bloco de instruções um determinado nº de vezes
+		* possui criterio que rege o loop
+		* break --> interrompe prematuramente o laço
+		* continue --> suspende ciclo atual e pula pro próximo
+
+	Comando switch/case:
+		* avalia variavel e executa codigo, de acordo com valor da mesma
+		* default --> valor padrao para exceção aos cases
+
+- FUNÇÕES
+
+	programa destinado a uma tarefa especifica. Pode ser utilizado varias
+vezes, em diferentes pontos do programa principal. 
+
+	Definindo uma função em javaScript --> function
+
+	As funções recebem podem receber parametros. O tipo de parametros nao é
+definido.
+
+	Para retornar um valor --> usar return
+
+- TRATAMENTO DE EVENTOS
+
+	durante o carregamento e exibição de uma página HTML, eventos ocorrem:
+		* evento de tecla digitada
+		* eventos de passar ponteiro de mouse sobre imagem
+		* carregamento de imagem finalizado
+		* etc
+
+	Tratamento de evento é o quesito mais importante da utilização do 
+JavaScript.
+
+	Exemplo de eventos que são comuns a elementos HTML:
+		* click --> clique de mouse
+		* mouserOver --> mouse sobre elemento
+		* MouseOut --> mouse sai do elemento
+		* Focus --> elemento em foco (cursor em campos de forms)
+		* Blur --> elemento perde foco
+		* Change --> elemento modificado (alterar valor em formulario)
+
