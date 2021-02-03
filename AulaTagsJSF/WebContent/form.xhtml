@@ -1,6 +1,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:f="http://java.sun.com/jsf/core">
+
+<!-- Página com formulário para obter do usuário:
+		- nome
+		- endereço
+		- data de nascimento
+		- sexo
+ -->
 	
 <h:head> 
 	<title>Formulário</title>
@@ -13,6 +20,7 @@ xmlns:f="http://java.sun.com/jsf/core">
 <table> 
 	<tr>
 		<td>Nome:</td>
+		<!-- Atenção para a Tag JSF usando value = "#{}" para definir o valor de nome -->
 		<td><h:inputText value="#{cadastroMBean.pessoa.nome}" size="50" required="true" requiredMessage="Nome: Campo obrigatório." /> </td>
 	</tr> 
 	<tr> 
@@ -23,6 +31,7 @@ xmlns:f="http://java.sun.com/jsf/core">
 		<td>Data de nascimento: </td>
 		<td>
 			<h:inputText value="#{cadastroMBean.pessoa.dataNascimento}" size="5" maxlength="10">
+			<!-- tag para validar formato da data -->
 			<f:convertDateTime pattern="dd/MM/yyyy" /> 
 			</h:inputText>
 		</td>
@@ -30,6 +39,7 @@ xmlns:f="http://java.sun.com/jsf/core">
 	<tr> 
 		<td> Sexo: </td> 
 		<td> 
+			<!-- tag para criar menu radial -->
 			<h:selectOneRadio value="#{cadastroMBean.pessoa.sexo}"> 
 			<f:selectItem itemValue="M" itemLabel="Masculino" /> 
 			<f:selectItem itemValue="F" itemLabel="Feminino" /> 
@@ -37,7 +47,8 @@ xmlns:f="http://java.sun.com/jsf/core">
 		</td> 
 	</tr>
 	<tr>
-		<td colspan="2" align="center"> 
+		<td colspan="2" align="center">
+			<!-- atributo action contendo #{cadastroMBean.cadastrar} para chamar o método cadastrar --> 
 			<h:commandButton value="Cadastrar" action="#{cadastroMBean.cadastrar}" />
 		</td>
 	</tr>

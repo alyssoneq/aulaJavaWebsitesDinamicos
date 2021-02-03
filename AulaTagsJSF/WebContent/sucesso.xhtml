@@ -2,6 +2,8 @@
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:f="http://java.sun.com/jsf/core">
 
+<!-- Página para visualizar dados de um cadastro efetuado -->
+
 <h:head>
 	<title>Sucesso </title>
 </h:head>
@@ -11,6 +13,7 @@ xmlns:f="http://java.sun.com/jsf/core">
 <table> 
 	<tr> 
 		<td>Nome: </td>
+		<!-- tag outputText acessando valor do nome com o value = "#{}" -->
 		<td><h:outputText value="#{cadastroMBean.pessoa.nome}" /> </td>
 	</tr> 
 	<tr> 
