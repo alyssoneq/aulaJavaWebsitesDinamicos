@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Motorista</title>
+</h:head>
+<h:body>
+	<h:messages/>
+	<h1>Novo motorista</h1>
+	<h:form>
+	<fieldset>
+		<p> Nome: <h:inputText value="#{cadastrarMotoristaMBean.motorista.nome}" 
+			size="50" required="true" requiredMessage="Nome: Campo obrigatório." /> </p>
+		<p> CPF: <h:inputText value="#{cadastrarMotoristaMBean.motorista.cpf}" 
+			size="20" required="true" requiredMessage="CPF: Campo obrigatório." /> </p>
+		<p> Matrícula: <h:inputText value="#{cadastrarMotoristaMBean.motorista.matricula}" 
+			size="20" required="true" requiredMessage="Matrícula: Campo obrigatório." /> </p>
+		<p> CNH: <h:inputText value="#{cadastrarMotoristaMBean.motorista.registroCnh}" 
+			size="20" required="true" requiredMessage="CNH: Campo obrigatório." /> 
+			Cat.: <h:inputText value="#{cadastrarMotoristaMBean.motorista.categoriaCnh}" 
+			size="10" required="true" requiredMessage="Cat.: Campo obrigatório." /> </p>
+		<p> Endereço: <h:inputTextarea value="#{cadastrarMotoristaMBean.motorista.endereco}" 
+			size="50" required="true" requiredMessage="Endereço: Campo obrigatório." /> </p>
+		<p><h:commandButton value="Cadastrar" action="#{cadastrarMotoristaMBean.cadastrar}" />
+			<h:commandButton value="Voltar" action="#{cadastrarMotoristaMBean.voltar}" 
+			immediate="true"/> </p>
+	</fieldset>
+	</h:form>
+</h:body>
+</html>

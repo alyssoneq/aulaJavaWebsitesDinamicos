@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>ônibus</title>
+</h:head>
+
+<h:body>
+	<h:messages/>
+	<h1>Novo ônibus</h1>
+	<h:form>
+	<fieldset>
+		<p>Marca: <h:inputText value="#{cadastrarOnibusMBean.onibus.marca}" 
+			size="20" required="true" requiredMessage="Marca: Campo obrigatório." />
+			Ano: <h:inputText value="#{cadastrarOnibusMBean.onibus.ano}" 
+			size="5" required="true" requiredMessage="Ano Campo obrigatório." />
+		</p>
+		<p> Modelo: <h:inputText value="#{cadastrarOnibusMBean.onibus.modelo}" 
+			size="50" required="true" requiredMessage="Modelo: Campo obrigatório." /> </p>
+		<p> Empresa:
+			<h:selectOneMenu value="#{cadastrarOnibusMBean.onibus.empresa.razaoSocial}">
+				<f:selectItems value="#{cadastrarEmpresaMBean.empresas}" /> 
+			</h:selectOneMenu>	 
+		</p>
+		<p> Motorista:
+			<h:selectOneMenu value="#{cadastrarOnibusMBean.onibus.motorista.nome}">
+				<f:selectItems value="#{cadastrarMotoristaMBean.motoristas}" /> 
+			</h:selectOneMenu>	
+		</p>
+		<p>Cobrador:
+			<h:selectOneMenu value="#{cadastrarOnibusMBean.onibus.cobrador.nome}">
+				<f:selectItems value="#{cadastrarCobradorMBean.cobradores}" />
+			</h:selectOneMenu>	
+		</p>
+		<p>Linha:
+			<h:selectOneMenu value="#{cadastrarOnibusMBean.onibus.linha.ident}">
+				<f:selectItems value="#{cadastrarLinhaMBean.linhas}" /> 
+			</h:selectOneMenu>	
+		</p>
+		<p><h:commandButton value="Cadastrar" action="#{cadastrarOnibusMBean.cadastrar}" />
+			<h:commandButton value="Listar" action="#{cadastrarOnibusMBean.listar}" immediate="true"/>
+			<h:commandButton value="Voltar" action="#{cadastrarOnibusMBean.voltar}" immediate="true"/> 
+		</p>
+	</fieldset>
+	</h:form>
+</h:body>
+</html>

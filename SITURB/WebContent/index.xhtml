@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>SITURB</title>
+</h:head>
+
+<h:body>
+	<h1>SITURB - Sistema de Transportes Urbanos</h1>
+	<hr/>
+		<h2>Operações:</h2>
+		<h:form>
+			<h:commandLink action="#{cadastrarEmpresaMBean.entrarCadastro}" value="Cadastrar Empresa"/> <br/>
+			<h:commandLink action="#{cadastrarCobradorMBean.entrarCadastro}" value="Cadastrar Cobrador"/> <br/>
+			<h:commandLink action="#{cadastrarMotoristaMBean.entrarCadastro}" value="Cadastrar Motorista"/> <br/>
+			<h:commandLink action="#{cadastrarLinhaMBean.entrarCadastro}" value="Cadastrar Linha"/> <br/>
+			<h:commandLink action="#{cadastrarOnibusMBean.entrarCadastro}" value="Cadastrar/listar Ônibus"/> <br/>
+		</h:form>
+	<hr/>
+</h:body>
+</html>
