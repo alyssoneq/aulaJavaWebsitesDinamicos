@@ -24,7 +24,7 @@
 	     	<a href="${url}">Ver carrinho de compras</a>
 	        <c:url var="url" value="/livros/comprar" />
 	        <!-- link para efetuar a compra -->
-            <a href="${url}">Finalizar compras</a></strong>
+            <strong><a href="${url}">Finalizar compras</a></strong>
          </p>
      </c:when>
      <!-- Conteudo mostrado para carrinho vazio -->
