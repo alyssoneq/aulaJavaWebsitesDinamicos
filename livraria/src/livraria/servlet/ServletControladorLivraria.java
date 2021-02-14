@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import livraria.negocio.CarrinhoCompras;
 import livraria.negocio.Livraria;
 import livraria.negocio.Livro;
+import livraria.negocio.excecoes.CompraException;
 import livraria.negocio.excecoes.LivroNaoEncontradoException;
 
 /**
@@ -55,7 +56,41 @@ public class ServletControladorLivraria extends HttpServlet {
 	                    // isso não deve acontecer
 	              }
 	        }
-	  }
+	    }else if (acaoSelecionada.equals("/livros/mostrarCarrinho")) {
+            idLivro = request.getParameter("remover");
+            // Caso alguma id for passada, item será removido do carrinho  
+		    if (idLivro != null) {
+		        carrinho.remover(idLivro);
+		    }
+	        // Esvazia carrinho se o parametro limpar = "limpar"         
+			limpar = request.getParameter("limpar");
+			    
+			if ((limpar != null) && limpar.equals("limpar")) {
+			    carrinho.limpar();
+			}
+			// Executando operação de aumentar ou diminuir quantidade no carrinho
+			idLivro = request.getParameter("alterar");
+
+			  if (idLivro != null) { 
+			   int quantidade = Integer.parseInt(request.getParameter("quantidade")); 
+
+			   if(quantidade == 1){ 
+			    carrinho.aumentarQuantidade(idLivro);
+			   }
+			   else if(quantidade == -1){ 
+			    carrinho.diminuirQuantidade(idLivro); 
+
+			   }
+		  	}
+		// Efetuando a compra dos itens do carrinho	
+	    }else if (acaoSelecionada.equals("/livros/recibo")) {
+	        try {
+	            livraria.comprarLivros(carrinho);
+	        } catch (CompraException ex) {
+	            ex.printStackTrace();
+	        }
+		}
+	    
 
 	    // Definindo qual tela será requisitada
 	    String tela = acaoSelecionada + ".jsp";

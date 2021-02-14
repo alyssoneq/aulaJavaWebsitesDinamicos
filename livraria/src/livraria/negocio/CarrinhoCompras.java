@@ -80,4 +80,20 @@ public class CarrinhoCompras {
     public void limpar() {
         itens.clear();
     }
+    
+    // Método para aumentar quantidade de item no carrinho
+	public void aumentarQuantidade(String idLivro) {
+		if (itens.containsKey(idLivro)) { 
+	  		ItemCompra item = itens.get(idLivro); 
+		 	item.incrementaQuantidade();
+		}
+	}
+	
+	// Método para diminuir quantidad de item no carrinho
+	public void diminuirQuantidade(String idLivro) { 
+	 	if (itens.containsKey(idLivro)) { 
+	  		ItemCompra item = itens.get(idLivro); 
+	  		item.decrementaQuantidade();
+		}
+	}
 }
