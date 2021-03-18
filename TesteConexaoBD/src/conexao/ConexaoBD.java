@@ -15,7 +15,7 @@ public class ConexaoBD {
 		
 		Connection conexao = null;
 		
-		String driverName = "com.mysql.jdbc.driver";
+		String driverName = "com.mysql.cj.jdbc.Driver";
 		Class.forName(driverName);
 		String url = "jdbc:mysql://" + serverName + "/" + myDatabase;
 		
