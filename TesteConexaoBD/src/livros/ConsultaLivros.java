@@ -7,6 +7,10 @@ import java.sql.Statement;
 
 import conexao.ConexaoBD;
 
+/**
+ * Classe para realizar a consulta de livros no banco de dados livraria
+ * 
+ * */
 public class ConsultaLivros {
 	
 	// Construtor
@@ -20,7 +24,7 @@ public class ConsultaLivros {
 		String serverName = "localhost";
 		String myDatabase = "livraria";
 		String userName = "root";
-		String password = "********";
+		String password = "*******";
 		Connection conexao = ConexaoBD.conecta(serverName, myDatabase, userName, password);
 		
 		try {
