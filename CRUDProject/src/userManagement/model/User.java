@@ -16,6 +16,15 @@ public class User {
 	private String email;
 	private String country;
 	
+	//Constructor to create users from a table
+	public User(int id, String name, String email, String country) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.country = country;
+	}
+	
 	//constructor
 	public User(String name, String email, String country) {
 		super();
