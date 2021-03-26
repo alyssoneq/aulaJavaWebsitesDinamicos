@@ -101,8 +101,8 @@ public class UserDAO {
 	}
 	
 	// Delete user from users table
-	public boolean deleteUser(int id) throws SQLException {
-		boolean rowDeleted;
+	public boolean deleteUser(int id){
+		boolean rowDeleted = false;
 		
 		// try-with-resources
 		try(Connection connection = DBConnection.getConnection();
@@ -112,14 +112,17 @@ public class UserDAO {
 			preparedStatement.setInt(1, id);
 			rowDeleted = preparedStatement.executeUpdate() > 0;
 			
+		}catch (SQLException e) {
+			e.printStackTrace();
 		}
+		
 		return rowDeleted;
 	}
 	
 	// Update data inside the users table
-	public boolean updateUser(User user) throws SQLException {
+	public boolean updateUser(User user)  {
 		
-		boolean rowUpdated;
+		boolean rowUpdated = false;
 		
 		//try-with-resources
 		try(Connection connection = DBConnection.getConnection();
@@ -132,6 +135,8 @@ public class UserDAO {
 			preparedStatement.setInt(4, user.getId());
 			
 			rowUpdated = preparedStatement.executeUpdate() > 0;
+		}catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
 		return rowUpdated;
