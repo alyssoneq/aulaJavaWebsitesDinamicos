@@ -19,6 +19,7 @@ public class DBConnection {
 	public static Connection getConnection() {
 		Connection connection = null;
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection(url, userName, password);
 			
 		} catch (Exception e) {

@@ -31,7 +31,6 @@ public class UserServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
    
@@ -60,6 +59,7 @@ public class UserServlet extends HttpServlet {
 			break;
 
 		default:
+			// handle the list request
 			listUsers(request, response);
 			break;
 		}
@@ -74,12 +74,12 @@ public class UserServlet extends HttpServlet {
 		users = userDAO.selectAllUsers();
 		
 		// Dispatcher to forward data to the jsp page
-		request.setAttribute("listUser", users);
+		request.setAttribute("listUsers", users);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("userList.jsp");
 		dispatcher.forward(request, response);
 	}
 	
-	// display user form
+	// method to show the create user form
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("userForm.jsp");
 		dispatcher.forward(request, response);
@@ -97,13 +97,13 @@ public class UserServlet extends HttpServlet {
 		response.sendRedirect("list");
 	}
 	
-	// method to edit the user form
+	// method to show the edit user form
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// fetching user by its ID
 		int id = Integer.parseInt(request.getParameter("id"));
 		User existingUser = userDAO.selectUser(id);
 		
-		// Redirect the new form with the user selected
+		// Redirect to the edit form with the seleted user data
 		RequestDispatcher dispatcher = request.getRequestDispatcher("userForm.jsp");
 		request.setAttribute("user", existingUser);
 		dispatcher.forward(request, response);

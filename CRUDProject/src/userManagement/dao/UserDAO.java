@@ -61,7 +61,7 @@ public class UserDAO {
 				String email = resultSet.getString("email");
 				String country = resultSet.getString("country");
 				
-				user = new User(name, email, country);
+				user = new User(id, name, email, country);
 			}
 			
 		} catch (SQLException e) {
