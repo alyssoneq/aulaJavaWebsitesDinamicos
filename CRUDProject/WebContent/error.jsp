@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Error</title>
 </head>
 <body>
-
-<!-- IN PROGRESS -->
-
+	<center>
+		<h1>Error</h1>
+		<h2><%=exception.getMessage() %><br/></h2>
+	</center>
 </body>
 </html>
