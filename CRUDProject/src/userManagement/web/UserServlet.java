@@ -24,14 +24,14 @@ public class UserServlet extends HttpServlet {
 	private UserDAO userDAO;
 	
 	public void Init() {
-		userDAO = new UserDAO();
+		this.userDAO = new UserDAO();
 	}
        
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		this.doGet(request, response);
 	}
    
 	/**
@@ -93,7 +93,8 @@ public class UserServlet extends HttpServlet {
 		String country = request.getParameter("country");
 		
 		// creating user in the database
-		userDAO.insertUser(new User(name, email, country));
+		User newUser = new User(name, email, country);
+		userDAO.insertUser(newUser);
 		response.sendRedirect("list");
 	}
 	
@@ -103,7 +104,7 @@ public class UserServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		User existingUser = userDAO.selectUser(id);
 		
-		// Redirect to the edit form with the seleted user data
+		// Redirect to the edit form with the selected user data
 		RequestDispatcher dispatcher = request.getRequestDispatcher("userForm.jsp");
 		request.setAttribute("user", existingUser);
 		dispatcher.forward(request, response);
@@ -118,7 +119,8 @@ public class UserServlet extends HttpServlet {
 		String country = request.getParameter("country");
 		
 		// Updating the user data using UserDAO class
-		userDAO.updateUser(new User(id, name, email, country));
+		User user = new User(id, name, email, country);
+		userDAO.updateUser(user);
 		response.sendRedirect("list");
 		
 	}

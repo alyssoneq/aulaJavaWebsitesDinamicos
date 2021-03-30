@@ -26,7 +26,7 @@ public class UserDAO {
 	private static final String UPDATE_USERS = "UPDATE users SET name=?, email=?, country=? WHERE id=?";
 	
 	// Insert user in the database
-	public void insertUser(User user) {
+	public void insertUser(User user){
 		// try-with-resources
 		try(Connection connection = DBConnection.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS) ) {
@@ -120,7 +120,7 @@ public class UserDAO {
 	}
 	
 	// Update data inside the users table
-	public boolean updateUser(User user)  {
+	public boolean updateUser(User user) {
 		
 		boolean rowUpdated = false;
 		

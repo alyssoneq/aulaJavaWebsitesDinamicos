@@ -2,6 +2,7 @@ package JDBC;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /* *
  * Class to manage the database connection
@@ -11,9 +12,9 @@ import java.sql.DriverManager;
 public class DBConnection {
 
 	// Connection params
-	private static final String url = "jdbc:mysql://localhost/crud?useSSL=false";
+	private static final String url = "jdbc:mysql://localhost:3306/crud?useSSL=false";
 	private static final String userName = "root";
-	private static final String password = "*******";
+	private static final String password = "********";
 	
 	// Method to connect with the database
 	public static Connection getConnection() {
@@ -22,7 +23,9 @@ public class DBConnection {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection(url, userName, password);
 			
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		
