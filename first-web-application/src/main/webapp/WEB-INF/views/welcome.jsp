@@ -8,5 +8,8 @@
 </head>
 <body>	
 	Welcome, ${name}!!
+	<!-- Adding the todos on the page to test -->
+	Your To Dos: <br>
+	${todos}
 </body>
 </html>

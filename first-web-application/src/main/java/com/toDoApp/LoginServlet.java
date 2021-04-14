@@ -8,11 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.toDoApp.todo.TodoService;
+
 @WebServlet (urlPatterns = "/login.do")
 public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private userValidationService validationService = new userValidationService();
+	private TodoService todoService = new TodoService();
 	
 	protected void doGet(HttpServletRequest request , HttpServletResponse response) throws IOException, ServletException{
 		// Requesting the login.jsp file
@@ -29,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 		// user valid forward to welcome
 		if(isUserValid) {
 			request.setAttribute("name", name);
-			request.setAttribute("password", password);		
+			request.setAttribute("todos", todoService.retrieveTodos());
 			request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);
 		}else {
 			request.setAttribute("errorMessage", "Invalidad credentials!");
