@@ -7,6 +7,12 @@
 <title>JSP test</title>
 </head>
 <body>
-	My First JSP ${name}
+	<!-- invalid data alert -->
+	<p><font color="red">${errorMessage}</font></p>
+	<form action="/login.do" method="post">
+		Enter your name: <input type="text" name="name"/> <br>
+		Type your password: <input type="password" name="password"/><br>	
+		<input type="submit" value="Login"/>
+	</form>
 </body>
 </html>
