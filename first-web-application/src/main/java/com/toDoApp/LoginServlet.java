@@ -15,6 +15,11 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request , HttpServletResponse response) throws IOException, ServletException{
+		// fetching a parameter
+		String name = request.getParameter("name");
+		// Setting the parameter for the jsp file
+		request.setAttribute("name", name);
+ 		
 		// Requesting the login.jsp file
 		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 	}
