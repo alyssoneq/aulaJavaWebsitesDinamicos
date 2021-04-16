@@ -1,4 +1,4 @@
-package com.toDoApp;
+package com.toDoApp.login;
 /*
  * Class to validate user login
  * This is a simple validation
